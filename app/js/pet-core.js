@@ -3,7 +3,7 @@
   "use strict";
   const N = window.NOVUM, E = N.engine;
   const SET_KEY = "novum-pet-settings", SAVE_KEY = "novum-pet-save";
-  const SET_DEF = { chosen: ["史威特", "沏萊爾", "佐代", "白"], size: "m", talk: "normal", late: true, zzz: true };
+  const SET_DEF = { chosen: ["史威特", "沏萊爾", "佐代", "白"], size: "m", light: "normal", talk: "normal", late: true, zzz: true };
   const SAVE_DEF = { bonds: {}, log: [], lastSeen: 0, daily: {}, met: {} };
   const MAX_OUT = 6;
 

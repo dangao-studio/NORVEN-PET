@@ -105,6 +105,8 @@
     if (host.desktop) { try { auto = await host.getAutoStart(); } catch (e) { auto = false; } }
     main.innerHTML = `
       <div class="field"><b>大小</b><div class="chips">${chips("size", [["s", "小"], ["m", "中"], ["l", "大"]])}</div></div>
+      <div class="field"><b>亮度</b><div class="chips">${chips("light", [["soft", "柔和"], ["normal", "標準"], ["bright", "明亮"]])}</div>
+        <p>角色在桌面上看起來的亮度。</p></div>
       <div class="field"><b>話量</b><div class="chips">${chips("talk", [["quiet", "安靜"], ["normal", "普通"], ["lively", "熱鬧"]])}</div>
         <p>決定大家多久聊一次天、自言自語的頻率。</p></div>
       <div class="field"><label class="switch"><span><b>深夜提醒</b><p>凌晨一點到五點你還在用電腦，偶爾會有人說話。</p></span>

@@ -32,8 +32,19 @@
   renderer.setClearColor(0x000000, 0);
   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
   const scene = new T.Scene();
-  scene.add(new T.HemisphereLight(0xFFFFFF, 0x8A7A66, 0.95));
-  const sun = new T.DirectionalLight(0xFFFFFF, 0.55); sun.position.set(3, 6, 8); scene.add(sun);
+  const hemi = new T.HemisphereLight(0xFFFFFF, 0x8A7A66, 0.75); scene.add(hemi);
+  const sun = new T.DirectionalLight(0xFFFFFF, 0.5); sun.position.set(3, 6, 8); scene.add(sun);
+  // 亮度：桌面上不像小鎮房間那麼暗，所以比小鎮收斂一點
+  const LIGHT = {
+    soft: { hemi: 0.6, sun: 0.42, glow: 0.03 },
+    normal: { hemi: 0.72, sun: 0.48, glow: 0.08 },
+    bright: { hemi: 0.95, sun: 0.55, glow: 0.22 }
+  };
+  function applyLight() {
+    const L = LIGHT[set.light] || LIGHT.normal;
+    hemi.intensity = L.hemi; sun.intensity = L.sun;
+    for (const p of pets) p.fig.root.traverse(o => { if (o.isMesh && o.material && o.material.emissiveMap) o.material.emissiveIntensity = L.glow; });
+  }
   const cam = new T.OrthographicCamera(0, 1, 1, 0, 0.1, 100);
   cam.position.set(0, 0, 40);
 
@@ -94,6 +105,7 @@
       sayUntil: 0, zzzAt: now() + rand(4000, 9000), partner: null, pose: "stand", lastPoke: 0, waveUntil: 0
     };
     pets.push(p);
+    applyLight();
     return p;
   }
   function removePet(p) {
@@ -475,6 +487,7 @@
     if (e.key === P.SET_KEY) {
       const old = set; set = P.settings();
       if (old.size !== set.size) layout();
+      if (old.light !== set.light) applyLight();
       syncCast(false);
     } else if (e.key === P.SAVE_KEY && !STREAM) {
       // 面板只會讀，不過以防萬一同步一下
