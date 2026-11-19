@@ -1,0 +1,65 @@
+:root {
+  --bg: #F3EEE4; --bg2: #EAE3D6; --card: #FFFDF8;
+  --ink: #2A2733; --ink2: #67616F; --ink3: #958E9C; --line: #E2D9C9;
+  --brass: #A87633; --brass-soft: #F1E3C8; --teal: #2C7A74; --teal-soft: #D8EBE8;
+  --shadow: 0 1px 2px rgba(60, 45, 20, .08), 0 4px 14px rgba(60, 45, 20, .07);
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--bg); color: var(--ink);
+  font-family: "Microsoft JhengHei", "PingFang TC", "Noto Sans TC", sans-serif; font-size: 14px; line-height: 1.55; }
+button { font: inherit; color: inherit; cursor: pointer; }
+
+.top { position: sticky; top: 0; z-index: 2; background: var(--bg); padding: 14px 16px 0; border-bottom: 1px solid var(--line); }
+.top h1 { margin: 0 0 10px; font-size: 18px; letter-spacing: .06em; color: var(--brass); }
+.tabs { display: flex; gap: 4px; }
+.tabs button { flex: 1; border: 0; background: transparent; padding: 9px 0 10px; border-bottom: 3px solid transparent; color: var(--ink2); }
+.tabs button.on { color: var(--ink); font-weight: 700; border-bottom-color: var(--brass); }
+
+main { padding: 14px 16px 30px; }
+.hint { color: var(--ink2); font-size: 13px; margin: 0 0 12px; }
+.count { float: right; color: var(--brass); font-weight: 700; }
+
+.grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+.who { display: flex; gap: 10px; align-items: center; text-align: left; padding: 9px; border-radius: 12px;
+  background: var(--card); border: 2px solid transparent; box-shadow: var(--shadow); min-height: 64px; }
+.who.on { border-color: var(--c); background: #fff; }
+.who img { width: 44px; height: 44px; border-radius: 10px; object-fit: cover; background: var(--bg2); flex: none; }
+.who b { display: block; font-size: 14px; }
+.who small { display: block; color: var(--ink3); font-size: 11.5px; line-height: 1.35; }
+.who .out { color: var(--c); font-size: 11px; font-weight: 700; }
+
+.card { background: var(--card); border-radius: 12px; box-shadow: var(--shadow); padding: 11px 13px; margin-bottom: 10px; }
+.card .meta { color: var(--ink3); font-size: 12px; }
+.card h4 { margin: 2px 0 0; font-size: 14px; }
+.card .faces { display: inline-flex; margin-right: 6px; vertical-align: middle; }
+.card .faces img { width: 22px; height: 22px; border-radius: 6px; margin-right: -4px; border: 1.5px solid var(--card); }
+.card details summary { cursor: pointer; list-style: none; }
+.card details summary::-webkit-details-marker { display: none; }
+.card .lines { margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--line); }
+.card .lines p { margin: 4px 0; }
+.card .lines .n { color: var(--ink2); font-style: italic; font-size: 13px; }
+.card .lines .s b { color: var(--c); margin-right: 4px; }
+.sep { color: var(--brass); font-weight: 700; font-size: 13px; margin: 18px 0 8px; }
+.sep:first-child { margin-top: 0; }
+.empty { text-align: center; color: var(--ink3); padding: 40px 10px; }
+
+.bond { display: flex; align-items: center; gap: 10px; }
+.bond .pair { display: flex; flex: none; }
+.bond .pair img { width: 34px; height: 34px; border-radius: 9px; border: 2px solid var(--card); }
+.bond .pair img + img { margin-left: -10px; }
+.bond .info { flex: 1; min-width: 0; }
+.bond .bar { display: block; height: 6px; background: var(--bg2); border-radius: 99px; overflow: hidden; margin-top: 4px; }
+.bond .bar i { display: block; height: 100%; background: var(--teal); border-radius: 99px; }
+.tagf { display: inline-block; font-size: 11px; background: var(--brass-soft); color: var(--brass); border-radius: 99px; padding: 0 7px; margin-left: 4px; }
+
+.field { background: var(--card); border-radius: 12px; box-shadow: var(--shadow); padding: 12px 14px; margin-bottom: 10px; }
+.field > b { display: block; margin-bottom: 8px; }
+.field p { margin: 6px 0 0; color: var(--ink2); font-size: 12.5px; }
+.chips { display: flex; gap: 6px; flex-wrap: wrap; }
+.chip { border: 1px solid var(--line); background: var(--bg); border-radius: 99px; padding: 6px 14px; min-height: 36px; }
+.chip.on { background: var(--teal); border-color: var(--teal); color: #fff; }
+.switch { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.switch input { width: 42px; height: 24px; accent-color: var(--teal); }
+.btn { border: 0; border-radius: 99px; padding: 9px 16px; background: var(--bg2); margin: 4px 6px 0 0; }
+.btn.main { background: var(--teal); color: #fff; }
+.ver { text-align: center; color: var(--ink3); font-size: 12px; margin-top: 18px; }
